@@ -36,7 +36,7 @@ Indicator: Women's Participation In Training
 Indicator definition
 --------------------
 
-This indicator is defined using JSON Schema. The schema `pcWomenCompletingTraining2.json </_static/measures/pcWomenCompletingTraining2.json>`_ can be used to validate this indicator.
+This indicator is defined using JSON Schema. The schema `pcWomenCompletingTraining2.json <../_static/measures/pcWomenCompletingTraining2.json>`_ can be used to validate this indicator.
 
 
  
