@@ -1,0 +1,201 @@
+{
+  "id": "http://update-this-url.org/schemas/measures/pcWomenCompletingTraining.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "code": {
+      "title": "pcWCT",
+      "description": "The code for this indicator is pcWCT.",
+      "type": "string",
+      "enum": [
+        "pcWCT"
+      ]
+    },
+    "value": {
+      "title": "Women completing training (as a percentage of the individuals completing training)",
+      "description": "The total number of participants completing training whose sex is known, divided by the number of of participants completing training whose sex is 'Female'.",
+      "type": "number",
+      "max": 1,
+      "min": 0
+    },
+    "numerator":{
+      "title":"Numerator",
+      "description":"Numerator",
+      "type":"object",
+      "properties":{
+        "code":{
+          "title":"nPWT",
+          "description":"The code for this indicator is nPWT",
+          "type":"string",
+          "enum":["nPWT"]
+        },
+        "value":{
+          "title":"Training: Female participants",
+          "description":"Number of training participants whose sex is female.",
+          "type":"number",
+          "min":0
+        }
+      }
+    },
+    "denominator":{
+      "title":"Denominator",
+      "description":"Denominator",
+      "type":"object",
+      "properties":{
+        "code":{
+          "title":"nTPART",
+          "description":"The code for this indicator is nTPART",
+          "type":"string",
+          "enum":["nTPART"]
+        },
+        "value":{
+          "title":"Training: total participants",
+          "description":"Total number of people participating in training.",
+          "type":"number",
+          "min":0
+        }
+      }
+    },
+    "dimensions": {
+      "title": "Dimensions",
+      "description": "Dimensions uniquely identify a statistical observation, and can also be used to express disaggregated data.",
+      "type": "object",
+      "properties": {
+        "periodStart": {
+          "title": "Period start",
+          "description": "When does the period covered by the observation start?",
+          "type": "string",
+          "format": "date"
+        },
+        "periodEnd": {
+          "title": "Period end",
+          "description": "When does the period covered by the observation end?",
+          "type": "string",
+          "format": "date"
+        },
+        "geographicCoverage": {
+          "type": "object",
+          "title": "Geographic coverage",
+          "description": "The geographic area covered by this observation. A location can be described by either a geometry (point location, line or polygon), or a gazetteer entry, or both.",
+          "properties": {
+            "description": {
+              "title": "Description",
+              "description": "A name or description of this location. This might include the name(s) of the location(s), or might provide a human readable description of the location to be covered. This description may be used in a user-interface.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "geometry": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "title": "Geometry",
+              "description": "We follow the [GeoJSON standard](http://geojson.org/) to express basic location information, using latitude and longitude values in the [WGS84](https://en.wikipedia.org/wiki/World_Geodetic_System) (EPSG:4326) projection.  A point location can be identified by geocoding a delivery address. For concession licenses, or other contracts covering a polygon location which is not contained in a known gazetteer, polygon and multi-polygon can be used. ",
+              "properties": {
+                "type": {
+                  "title": "Type",
+                  "description": "The type of [GeoJSON Geometry Objects](http://geojson.org/geojson-spec.html#geometry-objects) being provided. To provide latitude and longitude use 'Point', and enter an array of [latitude,longitude] as the value of coordinates field: e.g. [37.42,-122.085]. Note the capitalization of type values - set in order to maintain compatibility with GeoJSON.",
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "Point",
+                    "MultiPoint",
+                    "LineString",
+                    "MultiLineString",
+                    "Polygon",
+                    "MultiPolygon",
+                    null
+                  ]
+                },
+                "coordinates": {
+                  "title": "Coordinates",
+                  "description": "The relevant array of points, e.g. [latitude,longitude], or nested array, for the GeoJSON geometry being described. The longitude and latitude MUST be expressed in decimal degrees in the WGS84 (EPSG:4326) projection",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": [
+                      "number",
+                      "array"
+                    ]
+                  }
+                }
+              }
+            },
+            "gazetteer": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "title": "Gazetteer",
+              "description": "A gazetteer is a geographical index or directory. The specific gazetteer used should be specified in scheme, and one or more codes from that gazetteer used in identifier.",
+              "properties": {
+                "scheme": {
+                  "title": "Gazetteer scheme",
+                  "description": "The entry of the selected gazetteer in the gazetteers codelist. The codelist provides details of services, where available, that can resolve a gazetteer entry to provide location names.",
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "codelist": "locationGazetteers.csv",
+                  "openCodelist": true
+                },
+                "identifiers": {
+                  "title": "Identifiers",
+                  "description": "An array of one or more codes drawn from the gazetteer indicated in scheme.",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": [
+                      "string"
+                    ]
+                  }
+                }
+              }
+            },
+            "uri": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "title": "URI",
+              "description": "A URI to a further description of the location. This may be a human readable document with information on the location, or a machine-readable description of the location."
+            }
+          }
+        }
+      },
+      "required":["periodStart","periodEnd"]
+    },
+    "attributes": {
+      "type": "object",
+      "title": "Attributes",
+      "description": "Attributes provide descriptive information about an observation.",
+      "properties": {
+        "source": {
+          "type": "string",
+          "title": "Source",
+          "description": "A free text description of the source of this observation"
+        },
+        "sourceType": {
+          "type": "string",
+          "title": "Source type",
+          "description": "What type of source is this? Select one of ['estimate', 'farmerRecall', 'officialStatistics']",
+          "enum": [
+            "estimate",
+            "farmerRecall",
+            "officialStatistics"
+          ]
+        }
+      }
+    }
+  },
+  "required":["code","value"]
+}
