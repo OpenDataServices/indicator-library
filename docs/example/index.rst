@@ -68,4 +68,11 @@ Attributes
 .. jsonschema:: ../../schema/measures/pcWomenCompletingTraining2.json
     :include: attributes
 
+JSON Representation
+-------------------
 
+.. jsoninclude:: ../../schema/measures/pcWomenCompletingTraining2.json
+   :jsonpointer: /example
+
+Tabular representation
+-----------------------
