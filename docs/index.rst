@@ -16,3 +16,10 @@ Contents
    :maxdepth: 2
 
    example/index
+
+
+ToDo
+----
+
+* Automatically generate tabular representations of data
+* Factor out dimensions and attributes into their own library
